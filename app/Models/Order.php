@@ -5,13 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Report extends Model
+class Order extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        '',
-        'statues_id', 
+        'date',
+        'time',
+        'type',
+        'payment',
+        'adress',
+        'status_id', 
         'user_id',
     ];
 
@@ -22,7 +26,7 @@ class Report extends Model
 
     public function statue() 
     {
-        return $this->belongsTo(Statue::class, 'statues_id'); 
+        return $this->belongsTo(Order::class, 'status_id'); 
     }      
     
 }

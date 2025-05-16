@@ -2,24 +2,27 @@
 
 namespace Database\Seeders;
 
-use App\Models\Statue;
+use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class StatuesSeeder extends Seeder
+class StatusesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Statue::insert(
+        Status::insert(
             [
                 [
-                    'name'=> '',
+                    'title'=> 'в процессе',
                 ],
                 [
-                    'name'=> '',
+                    'title'=> 'завершена',
+                ],
+                [
+                    'title'=> 'отменена',
                 ],
             ]
         );
