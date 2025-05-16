@@ -30,7 +30,7 @@ class ReportController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $order = Order::findOrFail($id);
-        $order->statues_id = $request->input('status_id');
+        $order->statues_id = $request->input('statuses_id');
         $order->save();
 
         return response()->json(['success' => true]);
@@ -58,16 +58,16 @@ class ReportController extends Controller
 
     public function create()
     {
-        $statues = Status::all();
+        $status = Status::all();
 
-        return view('request', compact('statuses'));
+        return view('request', compact('status'));
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
             'date' => 'required|date|max:255',
-            'time' => 'required|time|max:255',
+            'time' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'payment' => 'required|string|max:255',
             'adress' => 'required|string|max:255',
@@ -81,7 +81,7 @@ class ReportController extends Controller
             'type' => $data['type'],
             'payment' => $data['payment'],
             'adress' => $data['adress'],
-            'statuses_id' => 1,
+            'statuses_id' =>'1',
             'user_id' => Auth::id(),
         ]);
 
